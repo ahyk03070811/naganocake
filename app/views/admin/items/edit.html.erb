@@ -1,2 +1,41 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<div class="container">
+  <h2 class="text-center my-5">商品編集</h2>
+  <div class="row">
+    <div class="col-8 offset-2 mb-5">
+      <%= form_with model: @item do |f| %>
+      <table>
+        <tr>
+          <th>商品画像</th>
+          <td><%= f.file_field :image, class:"mb-3 ml-3"%></td>
+        </tr>
+        <tr>
+            <th>商品名</th>
+            <td><%= f.tex_field :name, class: "form-control md-3" %></td>
+        </tr>
+        <tr>
+            <th>商品説明</th>
+            <td><%= f.text_area :introduction, class: "form-control form-control-lg md-3" %></td>
+        </tr>
+        <tr>
+            <th>ジャンル</th>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :name, { prompt: "選択してください" }, class: "form-select" %></td>
+        </tr>
+        <tr>
+            <th>税抜価格, class: "form_label" %></th>
+            <td><%= f.text_field :price %></td>
+        </tr>
+        <tr>
+            <th>販売ステータス</th>
+            <td>
+              <%= f.select :is_active,option_for_select[["販売中"],["販売停止中"]], options={ include_blank: true } %>
+            </td>
+        </tr>
+      </table>
+      
+      <div class="text-right">
+        <%= f.submit "更新", class: "btn btn-primary text-right" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,7 @@ class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!,only: [:create,:edit,:update,:index, :show, :new]
 
   def index
+    @items=Item.page(params[:page])
   end
 
   def new
@@ -18,9 +19,10 @@ class Admin::ItemsController < ApplicationController
       flash[:alert]="商品詳細に不備があります"
       render :new
     end
-    
+  end
 
   def show
+    @item=Item.find(params[:id])
   end
 
   def edit

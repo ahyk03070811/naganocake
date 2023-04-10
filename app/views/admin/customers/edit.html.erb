@@ -1,2 +1,18 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<div class="container">
+  <h2 class="text-center m-5"><%= full_name(@customer) %>さんの会員情報編集</h2>
+  <div class="row d-flex justify-content-center">
+    
+    <%= form_with model: @customer, url: admin_customer_path do |f| %>
+     <div class="col-xs-10 offset-1">
+       <div class="form-group col-xs-9">
+         <%= f.label : "会員ID", class: "col-sm-4" %>
+         <%= f.label : "#{customer.id}" %>
+       </div>
+       <div class="form-group col-xs-9">
+         <%= f.label : "氏名", class: "col-sm-3 form-control-static" %>
+         <%= f.text_field :last_name, class: "col-sm-3 form-control-static" %>
+         
+       </div>
+     </div>
+  </div>
+</div>

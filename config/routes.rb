@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   namespace :admin do
     root 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
@@ -15,6 +16,18 @@ Rails.application.routes.draw do
     root 'homes#top'
     get '/about' => 'homes#about'
     resources :items, only: [:index, :show]
+    resources :addresses, only: [:index, :create, :destroy, :edit, :update]
+    resources :cart_items, only: [:index, :create, :destroy, :update]
+    resources :orders, only: [:create, :show, :index]
+    get '/customers/may_page' => 'customers#show'
+    get '/customers/information/edit' => 'customers#edit'
+    patch '/customers/information' => 'customers#update'
+    get '/customers/unsubscribe' => 'customers#unsubscribe'
+    patch '/customers/withdraw' => 'customers#withdraw'
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+    get '/orders/new' => 'orders#new'
+    post '/orders/comfirm' => 'orders#comfirm'
+    get '/orders/complete' => 'orders#complete'
    end
 
  devise_for :customers,skip: [:passwords], controllers: {

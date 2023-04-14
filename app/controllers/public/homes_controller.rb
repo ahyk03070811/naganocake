@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   def top
-    @items = Item.all.order(created_at: :asc)
+    @items = Item.all.order('id DESC')
   end
 
   def about

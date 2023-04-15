@@ -1,2 +1,47 @@
-<h1>Public::Addresses#index</h1>
-<p>Find me in app/views/public/addresses/index.html.erb</p>
+<div class="container">
+  <h2>配送先登録・一覧</h2>
+  <div class="row">
+    
+    <%= form_with model: @address, url: addresses_path do |f| %>
+    
+    <div class="form-group col-xs-12">
+      <%= f.label :"郵便番号" %>
+      <%= f.text_field :postal_code, autofoucus: true %>
+    </div>
+    
+    <div class="form-group col-xs-12">
+      <%= f.label :"住所" %>
+      <%= f.text_field :address, autofoucus: true %>
+    </div>
+    
+    <div class="form-group col-xs-12">
+      <%= f.label :"宛名" %>
+      <%= f.text_field :name, autofoucus: true %>
+    </div>
+    
+    <%= f.submit "登録する", class: "btn btn-succes" %>
+  </div>
+  <% end %>
+  
+  
+  <table class="table table-bordered">
+    <tr>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>宛名</th>
+    </tr>
+    <% @addresses.each do |address| %>
+    <tr>
+      <td><%= address.postal_code %></td>
+      <td><%= address.address %></td>
+      <td><%= address.name %></td>
+      <td>
+        <%= link_to "編集する", edit_address_path(address), class: "btn btn-primary" %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+  <div class="col-xs-6 col-xs-offset-4">
+    <%= paginate @addresses 
+  </div>
+</div>

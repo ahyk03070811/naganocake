@@ -1,2 +1,51 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h2>登録情報編集</h2>
+    <div class="col-xs-12">
+
+      <%= form_with model: @customer, url: customers_information_path do |f| %>
+
+      <div class="form-group">
+        <%= f.label :"名前" %>
+        <%= f.label :"姓" %>
+        <%= f.text_field :first_name, autofoucus: true %>
+        <%= f.label :"名" %>
+        <%= f.text_field :last_name, autofoucus: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :"フリガナ" %>
+        <%= f.label :"セイ" %>
+        <%= f.text_field :first_name, autofoucus: true %>
+        <%= f.label :"メイ" %>
+        <%= f.text_field :last_name, autofoucus: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :"メールアドレス" %>
+        <%= f.email_field :email, autofoucus: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :"電話番号" %>
+        <%= f.text_field :telephone_number, autofoucus: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :"郵便番号" %>
+        <%= f.text_field :postal_code, autofoucus: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :"住所" %>
+        <%= f.text_field :address, autofoucus: true %>
+      </div>
+
+      <%= f.submit "編集を保存する" class: "btn btn-primary" %>
+      <% end %>
+
+      <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-danger" %>
+
+    </div>
+  </div>
+</div>

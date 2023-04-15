@@ -3,7 +3,42 @@
     <h3><strong>マイページ</strong></h3>
     <div class="col-xs-12">
       <h3>登録情報</h3>
-      <%= link_to "編集する", customers_information_edit_path(@customer), class: ""
+      <%= link_to "編集する", customers_information_edit_path(@customer), class: "btn btn-primary" %>
+      <%= link_to "パスワードを変更する", edit_customer_registration_path, class: "btn btn-primary" %>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>氏名</th>
+            <td><%= @customer.full_name %></td>
+          </tr>
+          <tr>
+            <th>フリガナ</th>
+            <td><%= @customer.first_name %><%= @customer.last_name %></td>
+          </tr>
+          <tr>
+            <th>郵便番号</th>
+            <td><%= @customer.postal_code %></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td><%= @customer.address %></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td><%= @customer.telephone_number %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @customer.email %></td>
+          </tr>
+        </thead>
+      </table>
+
+      <h2>配送先</h2>
+      <%= link_to "一覧", addresses_path, class: "btn btn-primary" %>
+      <h2>注文履歴</h2>
+      <%= link_to "一覧", orders_path, class: "btn btn-primary" %>
     </div>
   </div>
 </div>

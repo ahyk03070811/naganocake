@@ -1,29 +1,29 @@
 <div class="container">
   <h2>配送先登録・一覧</h2>
   <div class="row">
-    
+
     <%= form_with model: @address, url: addresses_path do |f| %>
-    
+
     <div class="form-group col-xs-12">
       <%= f.label :"郵便番号" %>
       <%= f.text_field :postal_code, autofoucus: true %>
     </div>
-    
+
     <div class="form-group col-xs-12">
       <%= f.label :"住所" %>
       <%= f.text_field :address, autofoucus: true %>
     </div>
-    
+
     <div class="form-group col-xs-12">
       <%= f.label :"宛名" %>
       <%= f.text_field :name, autofoucus: true %>
     </div>
-    
+
     <%= f.submit "登録する", class: "btn btn-succes" %>
   </div>
   <% end %>
-  
-  
+
+
   <table class="table table-bordered">
     <tr>
       <th>郵便番号</th>
@@ -41,7 +41,5 @@
     </tr>
     <% end %>
   </table>
-  <div class="col-xs-6 col-xs-offset-4">
-    <%= paginate @addresses 
-  </div>
+ <div class="d-flex justify-content-center"><%= paginate(@addresses) %></div>
 </div>

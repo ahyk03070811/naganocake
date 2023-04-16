@@ -4,14 +4,14 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
-    @customer=Cistomer.find(params[:id])
+    @customer=current_customer
   end
 
   def update
-    @customer = Customer.find(params[:id])
+    @customer=current_customer
     if @customer.update(customer_params)
       flash[:notice] = "個人情報を編集しました"
-      redirect_to customers_may_page(current_customer.id)
+      redirect_to customers_my_page_path
     else
       flash[:danger] = "個人情報の編集に失敗しました"
       render :edit
@@ -28,7 +28,7 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :telephone_number, :postal_code, :address, :is_deleted)
+    params.require(:customer).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :telephone_number, :postal_code, :address, :email)
   end
 
 

@@ -1,2 +1,27 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-5">
+      <%= image_tag @item.get_image(200,200) %>
+    </div>
+    <div class="col-xs-5">
+      <%= form_with model: @cart_item, url: cart_items_path(item_id: @item) do |f| %>
+      <h3><%= @item.name %></h3>
+      <p><%= @item.introduction %></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2">
+    </div>
+    <div class="col-xs-5">
+      <p>¥ <%= ((@item.price*1.1).floor).to_s(:delimited, delimiter: ',') %> (税込)
+				<span>　　</span><%= f.select :quantity, [['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]], {:prompt => "個数選択"} %></p>
+		</div>
+
+		<div class="col-xs-5">
+		  <p><%= f.submit "カートに入れる", class:"btn btn-primary" %></p>
+		</div>
+		<% end %>
+    </div>
+  </div>
+</div>
